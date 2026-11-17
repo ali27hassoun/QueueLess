@@ -1,118 +1,42 @@
-import { useState } from 'react'
-import { Mail, Lock, ArrowRight } from 'lucide-react'
-import queuelessLogo from './assets/queueless-logo.png'
-import './App.css'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+
+import Login from './pages/Login'
+import Dashboard from './pages/Dashboard'
+import Departments from './pages/Departments'
+import MyTicket from './pages/MyTicket'
+import History from './pages/History'
 
 function App() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-
-  const handleLogin = (e) => {
-    e.preventDefault()
-
-    if (
-      email === 'student@queueless.com' &&
-      password === 'student123'
-    ) {
-      setError('')
-      alert('Welcome to QueueLess!')
-    } else {
-      setError('Invalid email or password. Please try again.')
-    }
-
-  }
+  const isLoggedIn = sessionStorage.getItem('queuelessUser')
 
   return (
-    <main className="login-page">
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
 
-      <section className="login-brand">
-        <div className="brand-content">
-          <img
-            src={queuelessLogo}
-            alt="QueueLess"
-            className="brand-logo"
-          />
+        <Route
+          path="/dashboard"
+          element={isLoggedIn ? <Dashboard /> : <Navigate to="/" />}
+        />
 
-          <div className="brand-message">
-            <span className="brand-tag">UNIVERSITY QUEUE MANAGEMENT</span>
+        <Route
+          path="/departments"
+          element={isLoggedIn ? <Departments /> : <Navigate to="/" />}
+        />
 
-            <h1>Your time matters.<br />Your queue shouldn't.</h1>
+        <Route
+          path="/my-ticket"
+          element={isLoggedIn ? <MyTicket /> : <Navigate to="/" />}
+        />
 
-            <p>
-              Skip the uncertainty. Manage your university service
-              queues with a smarter, simpler experience.
-            </p>
-          </div>
+        <Route
+          path="/history"
+          element={isLoggedIn ? <History /> : <Navigate to="/" />}
+        />
 
-          <div className="brand-footer">
-            © 2026 QueueLess. All rights reserved.
-          </div>
-        </div>
-      </section>
-
-      <section className="login-section">
-        <div className="login-container">
-
-          <div className="login-heading">
-            <span className="welcome-label">WELCOME BACK</span>
-            <h2>Sign in to your account</h2>
-            <p>Enter your university credentials to continue.</p>
-          </div>
-
-          <form onSubmit={handleLogin}>
-
-            <div className="form-group">
-              <label htmlFor="email">University Email</label>
-
-              <div className="input-wrapper">
-                <Mail size={19} />
-                <input
-                  id="email"
-                  type="email"
-                  placeholder="student@university.edu"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
-
-              <div className="input-wrapper">
-                <Lock size={19} />
-                <input
-                  id="password"
-                  type="password"
-                  placeholder="Enter your password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </div>
-            </div>
-
-            {error && <p className="login-error">{error}</p>}
-
-            <button type="submit" className="login-button">
-              Sign In
-              <ArrowRight size={19} />
-            </button>
-
-          </form>
-
-          <div className="login-note">
-            <span>SECURE STUDENT ACCESS</span>
-            <p>QueueLess · University Services Portal</p>
-          </div>
-
-        </div>
-      </section>
-
-    </main>
-
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
