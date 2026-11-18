@@ -1,0 +1,118 @@
+/* TOPBAR */
+.topbar {
+  height: 85px;
+  width: 100%;
+
+  background: var(--surface);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 35px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+/* PAGE TITLE */
+.topbar-title h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.topbar-title p {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* RIGHT SIDE */
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+/* NOTIFICATIONS */
+.notification-button {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+
+  color: var(--text-secondary);
+
+  transition: all 0.2s ease;
+}
+
+.notification-button:hover {
+  background: var(--surface-hover);
+  color: var(--secondary);
+}
+
+.notification-dot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  width: 8px;
+  height: 8px;
+
+  background: var(--danger);
+  border: 2px solid white;
+  border-radius: 50%;
+}
+
+/* DIVIDER */
+.topbar-divider {
+  width: 1px;
+  height: 35px;
+  background: var(--border);
+}
+
+/* STUDENT PROFILE */
+.student-profile {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #dbeafe;
+  color: var(--secondary);
+
+  border-radius: 50%;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.profile-email {
+  font-size: 11px;
+  color: var(--text-secondary);
+}

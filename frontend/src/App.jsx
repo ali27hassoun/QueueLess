@@ -6,35 +6,35 @@ import Departments from './pages/Departments'
 import MyTicket from './pages/MyTicket'
 import History from './pages/History'
 
+import StudentLayout from './components/StudentLayout'
+
 function App() {
   const isLoggedIn = sessionStorage.getItem('queuelessUser')
 
   return (
     <BrowserRouter>
       <Routes>
+
+        {/* Login page */}
         <Route path="/" element={<Login />} />
 
+        {/* Protected student area */}
         <Route
-          path="/dashboard"
-          element={isLoggedIn ? <Dashboard /> : <Navigate to="/" />}
-        />
+          element={
+            isLoggedIn
+              ? <StudentLayout />
+              : <Navigate to="/" replace />
+          }
+        >
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/departments" element={<Departments />} />
+          <Route path="/my-ticket" element={<MyTicket />} />
+          <Route path="/history" element={<History />} />
+        </Route>
 
-        <Route
-          path="/departments"
-          element={isLoggedIn ? <Departments /> : <Navigate to="/" />}
-        />
+        {/* Unknown routes */}
+        <Route path="*" element={<Navigate to="/" replace />} />
 
-        <Route
-          path="/my-ticket"
-          element={isLoggedIn ? <MyTicket /> : <Navigate to="/" />}
-        />
-
-        <Route
-          path="/history"
-          element={isLoggedIn ? <History /> : <Navigate to="/" />}
-        />
-
-        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   )
