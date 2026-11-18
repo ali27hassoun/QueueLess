@@ -17,12 +17,61 @@
 
 /* LOGO */
 .sidebar-logo {
+  height: 80px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 12px;
+  margin: -20px -12px 30px;
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    #101d48 0%,
+    #172554 75%,
+    #1e3a8a 100%
+  );
+  border-bottom: 2px solid #536dfe;
+  border-radius: 0 0 55px 55px;
+  box-shadow:
+    0 5px 20px rgba(37, 99, 235, 0.35),
+    0 0 25px rgba(99, 102, 241, 0.2);
+}
 
-  padding: 0 12px;
-  margin-bottom: 55px;
+.logo-glow {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.logo-glow::before,
+.logo-glow::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 28%;
+  height: 2px;
+ background: #a5b4fc;
+box-shadow:
+  0 0 5px #a5b4fc,
+  0 0 12px #818cf8,
+  0 0 20px #6366f1;
+}
+
+.logo-glow::before {
+  left: 5%;
+}
+
+.logo-glow::after {
+  right: 5%;
+}
+
+.logo-glow img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
 }
 
 .logo-mark {
@@ -121,3 +170,4 @@
   background: rgba(220, 38, 38, 0.15);
   color: #fca5a5;
 }
+

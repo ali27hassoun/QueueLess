@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { getActiveTicket } from '../utils/ticketUtils'
 
+import '../styles/Dashboard.css'
 
 import {
   FileText,
@@ -11,9 +14,6 @@ import {
   Users
 } from 'lucide-react'
 
-import '../styles/Dashboard.css'
-
-// Temporary department data
 const departments = [
   {
     id: 1,
@@ -63,10 +63,11 @@ const departments = [
 ]
 
 function Dashboard() {
+  const [activeTicket, setActiveTicket] = useState(getActiveTicket())
   return (
     <div className="dashboard">
 
-      
+
       <section className="welcome-section">
         <div>
           <h1>Welcome back, Student! 👋</h1>
@@ -92,13 +93,18 @@ function Dashboard() {
 
         <div className="stat-card">
           <h3>Your Active Ticket</h3>
-          <h2>None</h2>
-          <p>You haven't joined a queue yet</p>
+          <h2>{activeTicket ? activeTicket.ticketNumber : 'None'}</h2>
+          <p>
+            {activeTicket
+              ? activeTicket.departmentName
+              : "You haven't joined a Queue yet"}
+          </p>
+
         </div>
 
       </section>
 
-      {/* Departments Section */}
+
       <section className="departments-section">
 
         <div className="section-heading">
@@ -173,10 +179,24 @@ function Dashboard() {
 
       </section>
 
-      {/* Active Ticket Section */}
       <section className="active-ticket-section">
         <h2>Your Active Ticket</h2>
-        <p>You don't have an active ticket at the moment.</p>
+
+        {activeTicket ? (
+          <div>
+            <h3>{activeTicket.departmentName}</h3>
+            <p>Ticket Number: {activeTicket.ticketNumber}</p>
+            <p>Status: {activeTicket.status}</p>
+            <p>People ahead: {activeTicket.peopleAhead}</p>
+            <p>Estimated wait: ~{activeTicket.estimatedWait} min</p>
+
+            <Link to="/my-ticket" className="view-queue-button">
+              View My Ticket
+            </Link>
+          </div>
+        ) : (
+          <p>You don't have an active ticket at the moment.</p>
+        )}
       </section>
 
     </div>

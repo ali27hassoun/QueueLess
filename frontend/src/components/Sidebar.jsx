@@ -6,7 +6,7 @@ import {
   History,
   LogOut
 } from 'lucide-react'
-
+import logo from '../assets/queueless-mark.png'
 import '../styles/Sidebar.css'
 
 function Sidebar() {
@@ -22,8 +22,13 @@ function Sidebar() {
 
       {/* Logo */}
       <div className="sidebar-logo">
-        <div className="logo-mark">Q</div>
-        <span>QueueLess</span>
+        <div className="logo-glow">
+        <img
+          src={logo}
+          alt="QueueLess Logo"
+          className="sidebar-logo-image"
+        />
+        </div>
       </div>
 
       {/* Navigation */}

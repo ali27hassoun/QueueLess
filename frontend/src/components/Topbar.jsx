@@ -1,9 +1,11 @@
 import { useLocation } from 'react-router-dom'
 import { Bell, UserRound } from 'lucide-react'
+import { useState } from 'react'
 
 import '../styles/Topbar.css'
 
 function Topbar() {
+  const [showNotifications, setShowNotifications] = useState(false)
   const location = useLocation()
 
   const pageTitles = {
@@ -29,10 +31,25 @@ function Topbar() {
       {/* Right Side */}
       <div className="topbar-actions">
 
-        <button className="notification-button" aria-label="Notifications">
-          <Bell size={20} />
-          <span className="notification-dot"></span>
-        </button>
+        <div className="notification-wrapper">
+
+          <button
+            className="notification-button"
+            aria-label="Notifications"
+            onClick={() => setShowNotifications(!showNotifications)}
+          >
+            <Bell size={20} />
+            <span className="notification-dot"></span>
+          </button>
+
+          {showNotifications && (
+            <div className="notification-popup">
+              <strong>Notifications</strong>
+              <p>You don't have any notifications yet.</p>
+            </div>
+          )}
+
+        </div>
 
         <div className="topbar-divider"></div>
 
