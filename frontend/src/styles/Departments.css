@@ -1,0 +1,193 @@
+.departments-page {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+
+.departments-header h1 {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.departments-header p {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+
+.department-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 13px 16px;
+  max-width: 450px;
+  color: var(--text-muted);
+  box-shadow: var(--shadow-sm);
+}
+
+.department-search input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.department-search input::placeholder {
+  color: var(--text-muted);
+}
+
+
+.departments-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.departments-summary h2 {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.departments-summary span {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* Department cards */
+.all-departments-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.all-departments-grid .department-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 12px 24px;
+  padding: 22px 26px;
+}
+
+.all-departments-grid .department-card-top {
+  grid-column: 1 / -1;
+}
+
+.all-departments-grid .department-card h3 {
+  margin: 0;
+}
+
+.all-departments-grid .department-description {
+  margin: 0;
+}
+
+.all-departments-grid .department-info {
+  margin: 8px 0 0;
+}
+
+.all-departments-grid .view-queue-button {
+  grid-column: 2;
+  grid-row: 2 / span 2;
+  width: 150px;
+}
+
+.no-results {
+  text-align: center;
+  padding: 35px;
+  color: #B91C1C;
+  background: #FEE2E2;
+  border: 1px dashed #FECACA;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.queue-preview {
+  grid-column: 1 / -1;
+  background: #F1F5F9;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+.queue-preview h4 {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.8px;
+  margin-bottom: 18px;
+}
+
+.queue-preview-info {
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.queue-preview-info div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.queue-preview-info span {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.queue-preview-info strong {
+  font-size: 19px;
+  color: var(--text-primary);
+}
+
+.queue-preview > p {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 18px;
+}
+
+.queue-preview-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.queue-join-button {
+  background: var(--secondary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.2s ease, transform 0.2s ease;
+  height:100%;
+}
+
+.queue-join-button:hover {
+  background: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 650px) {
+  .queue-preview-main {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .queue-join-button {
+    width: 100%;
+    height:100%;
+  }
+}
